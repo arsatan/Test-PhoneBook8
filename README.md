@@ -33,3 +33,10 @@
 3) БД - любая
 4) Использовать паттерн MVVM
 Результат загрузить в публичный репозиторий GitHub или GitLab
+
+Для фильтрации/сортировки использованы наработки:
+<author>mishkin Ivan</author>
+<email>Mishkin_Ivan@mail.ru</email>
+<date>28.01.2015</date>
+<project>ItemsFilter</project>
+<license> GNU General Public License version 3 (GPLv3) </license>
