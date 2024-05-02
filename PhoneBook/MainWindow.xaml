@@ -1,0 +1,124 @@
+﻿<Window x:Class="PhoneBook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhoneBook"
+        xmlns:bsFilter="http://schemas.bolapansoft.com/xaml/Controls/ItemsFilter"
+        mc:Ignorable="d"
+        Title="PhoneBook" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Window.Resources>
+    <StackPanel Name="MainStackPanel" MinHeight="370" VerticalAlignment="Top" Background="AliceBlue">
+        <DataGrid x:Name="MainView" SelectionMode="Single"
+          HorizontalAlignment="Stretch" MinHeight="370"
+          ItemsSource="{Binding Persons}" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Family"
+                                    Width="Auto"
+                                    Binding="{Binding Family}"
+                                    Header="Фамилия">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Name"
+                    Width="Auto"
+                    Binding="{Binding Name}"
+                    Header="Имя">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Father"
+                    Width="Auto"
+                    Binding="{Binding Father}"
+                    Header="Отчество">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Street"
+                    Width="Auto"
+                    Binding="{Binding Street}"
+                    Header="Улица">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="House"
+                    Width="Auto"
+                    Binding="{Binding House}"
+                    Header="Дом">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Phone_home"
+                    Width="Auto"
+                    Binding="{Binding Phone_home}"
+                    Header="Домашний телефон">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Phone_work"
+                    Width="Auto"
+                    Binding="{Binding Phone_work}"
+                    Header="Рабочий телефон">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="Phone_mobile"
+                   Width="Auto"
+                   Binding="{Binding Phone_mobile}"
+                   Header="Мобильный телефон">
+                    <bsFilter:ColumnFilter.Initializers>
+                        <bsFilter:FilterInitializersManager>
+                            <bsFilter:EqualFilterInitializer/>
+                            <bsFilter:RangeFilterInitializer/>
+                        </bsFilter:FilterInitializersManager>
+                    </bsFilter:ColumnFilter.Initializers>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid>
+            <WrapPanel HorizontalAlignment="Left">
+                <Button Content="Поиск по телефону" HorizontalAlignment="Left" Margin="10" Width="120" Click="OpenPopup_Click"/>
+                <Popup Name="FindByPhone" IsOpen="False" StaysOpen="False" Placement="Center">
+                    <local:UserControlFindByPhone/>
+                </Popup>
+                <Button Content="Адреса" Name="ViewStrets" HorizontalAlignment="Left" Margin="10" Width="120" Click="ViewStreets_Click"/>
+                <Button Content="Выгрузить в CSV" x:Name="CSVExport" HorizontalAlignment="Center" Margin="10"  Width="120" Click="CSVExport_Click" Height="20"/>
+            </WrapPanel>
+        </Grid>
+    </StackPanel>
+</Window>
